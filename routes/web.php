@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +41,7 @@ route::prefix('admin')->group(function () {
         return "manage users";
     });
 });
+
+//controller routes
+route::get('/user',[UserController::class,'hello']);
+route::get('/intro',[UserController::class,'helloUser']);
