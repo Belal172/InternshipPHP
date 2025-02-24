@@ -4,6 +4,8 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SingleController;
+use App\Http\Controllers\PhotoController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,3 +61,6 @@ route::controller(UserController::class)->group(function(){
 
 //single action controller route
 Route::get('/single',SingleController::class);
+
+//restful routtng
+route::resource('/photos',PhotoController::class);
