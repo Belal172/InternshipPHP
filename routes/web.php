@@ -3,6 +3,7 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SingleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,5 +44,18 @@ route::prefix('admin')->group(function () {
 });
 
 //controller routes
-route::get('/user',[UserController::class,'hello']);
-route::get('/intro',[UserController::class,'helloUser']);
+// route::get('/user',[UserController::class,'hello'])->name('users');
+// route::get('/blog',[UserController::class,'showBlog'])->name('blogs');
+
+// route::get('/intro/{name}',[UserController::class,'helloUser'])->name('intro');
+
+//gropu of controller
+route::controller(UserController::class)->group(function(){
+    route::get('/user','hello')->name('users');
+    route::get('/blog','showBlog')->name('blogs');
+    
+    route::get('/intro/{name}','helloUser')->name('intro');
+});
+
+//single action controller route
+Route::get('/single',SingleController::class);

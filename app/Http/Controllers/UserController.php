@@ -10,8 +10,12 @@ class UserController extends Controller
         //echo "this is user controller of basic controller";
         return view('home');
     }
-    public function helloUser(){
+    public function showBlog(){
         //echo "this is user controller of basic controller";
-        return view('myintro');
+        return view('blog');
+    }
+    public function helloUser($name){
+        //echo "this is user controller of basic controller";
+        return view('myintro',compact('name'));//if key an dvalue are same name use compact() method;
     }
 }
