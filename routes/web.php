@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\PhotoController;
 
@@ -52,7 +54,7 @@ route::prefix('admin')->group(function () {
 // route::get('/intro/{name}',[UserController::class,'helloUser'])->name('intro');
 
 //gropu of controller
-route::controller(UserController::class)->group(function(){
+route::controller(ExampleController::class)->group(function(){
     route::get('/user','hello')->name('users');
     route::get('/blog','showBlog')->name('blogs');
     
@@ -64,3 +66,16 @@ Route::get('/single',SingleController::class);
 
 //restful routtng
 route::resource('/photos',PhotoController::class);
+
+//crud started using eloquent
+Route::get('/student',[StudentController::class,'index'])->name('student.index');
+
+route::get('/editstd/{id}',[StudentController::class,'edit'])->name('student.edit');
+route::put('/updatestd/{id}',[StudentController::class,'update'])->name('student.update');
+route::delete('/destroystd/{id}',[StudentController::class,'destroy'])->name('student.destroy');
+route::get('/createstd',[StudentController::class,'create'])->name('student.create');
+route::post('/storestd',[StudentController::class,'store'])->name('student.store');
+
+
+
+route::get('/show/{id}',[StudentController::class,'show'])->name('student.view');

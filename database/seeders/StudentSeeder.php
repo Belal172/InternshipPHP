@@ -13,9 +13,36 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        student::create([
-            'name'=>'Milan Belal',
-            'email'=>'milanbelal@gmail.com'
-        ]);
+       $students=collect([
+        [
+            'name'=>'milan belal',
+            'email'=>'milan@gmail.com',
+            'phone'=>'9821671720',
+            'address'=>'dhangadhi'
+        ],
+        [
+            'name'=>'hari',
+            'email'=>'hari@gmail.com',
+            'phone'=>'9845678300',
+            'address'=>'ktm'
+        ],
+        [
+            'name'=>'ankit belal',
+            'email'=>'ankit@gmail.com',
+            'phone'=>'9815613651',
+            'address'=>'doti'
+        ],
+        [
+            'name'=>'Shreee ram ',
+            'email'=>'shree@gmail.com',
+            'phone'=>'012555585',
+            'address'=>'Ayodhya'
+        ],
+
+       ]);
+       $students->each(function($student){
+        student::insert($student);
+
+       });
     }
 }
