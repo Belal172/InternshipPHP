@@ -79,3 +79,7 @@ route::post('/storestd',[StudentController::class,'store'])->name('student.store
 
 
 route::get('/show/{id}',[StudentController::class,'show'])->name('student.view');
+
+
+//layouts 
+route::view('/home1','home1');
