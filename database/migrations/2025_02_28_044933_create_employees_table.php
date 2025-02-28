@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('skills');
             $table->string('phone');
+            $table->string('photo');
 
             $table->timestamps();
         });

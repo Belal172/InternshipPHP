@@ -36,7 +36,8 @@ class EmployeeController extends Controller
             'phone' => 'required |numeric |digits:10',
             'city' => 'required',
             'skills' => 'required | nullable |array',
-            'gender' => 'required | in:male,female,others'
+            'gender' => 'required | in:male,female,others',
+            'photo'=>'required |file|mimes:jpg,png,pdf|max:2048'
         ]);
         Employee::create([
             'name' => $request->name,
@@ -45,10 +46,13 @@ class EmployeeController extends Controller
             'gender' => $request->gender,
             'city' => $request->city,
             'skills' => json_encode($request->skills), // Assuming skills is an array of checkbox values
-            'phone' => $request->phone
+            'phone' => $request->phone,
+            //photo upload
+            'photo' => $request->file('photo')->store('uploads', 'public')
+            
         ]);
 
-        return redirect()->route('employee.index');
+        return redirect()->route('employee.index')->with('success','Employee created successfully');
     }
 
     /**
@@ -81,7 +85,8 @@ class EmployeeController extends Controller
             'gender' => $request->gender,
             'city' => $request->city,
             'skills' => json_encode($request->skills), // Assuming skills is an array of checkbox values
-            'phone' => $request->phone
+            'phone' => $request->phone,
+             'photo' => $request->file('photo')->store('uploads', 'public')
         ]);
         return redirect('employee.index');
     }

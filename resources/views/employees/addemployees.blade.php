@@ -113,7 +113,7 @@ button[type="submit"]:hover {
     </style>
 </head>
 <body>
-    <form action="{{ route('employee.save') }}" method="POST">
+    <form action="{{ route('employee.save') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="input-form">
             <label for="name">Enter NAme </label>
@@ -169,6 +169,11 @@ button[type="submit"]:hover {
             </select>
             <span style="color:red">@error('city'){{ $message }} @enderror</span>
 
+        </div>
+        <div class="input-form"></div>
+            <label for="resume">Upload Photo</label>
+            <input type="file" name="photo">
+            <span style="color:red">@error('photo'){{ $message }} @enderror</span>
         </div>
         
 
