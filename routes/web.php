@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Routing\Router;
@@ -83,3 +84,22 @@ route::get('/show/{id}',[StudentController::class,'show'])->name('student.view')
 
 //layouts 
 route::view('/home1','home1');
+
+//blade templating engine
+//loops 
+//route::view('/loop','loopsexample');
+//route::get('/loop/{id}',[UserController::class,'show'])->name('loops.view');
+
+   
+    Route::get('/loop',[Usercontroller::class,'index'])->name('user.index');
+
+
+    //form hamdling
+    Route::get('/emp',[EmployeeController::class,'index'])->name('employee.index');
+    Route::get('/addemp',[EmployeeController::class ,'create'])->name('employee.create');
+    route::post('/saveemp',[EmployeeController::class,'store'])->name('employee.save');
+    route::get('/showemp/{id}',[EmployeeController::class,'show'])->name('employee.view');
+
+    route::delete('/destroyemp/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
+    route::get('/editemp/{id}',[EmployeeController::class,'edit'])->name('employee.edit');
+    route::put('/updateemp/{id}',[EmployeeController::class,'update'])->name('employee.update');
