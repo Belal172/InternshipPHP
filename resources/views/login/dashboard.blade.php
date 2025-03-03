@@ -47,8 +47,8 @@
             <h1>Welcome to Your Dashboard</h1>
         </div>
         <div class="details">
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Name:</strong> {{ Auth::user()->name }}</p>
+            <p><strong>Email:</strong>{{ Auth::user()->email }}</p>
         </div>
         <a href="{{ route('logout') }}" class="logout-button">Logout</a>
     </div>
