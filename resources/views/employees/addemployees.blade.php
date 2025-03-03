@@ -1,117 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add employee</title>
     <style>
         /* General form styling */
-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
-}
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
 
-/* Input fields styling */
-.input-form {
-    margin-bottom: 15px;
-}
+        /* Input fields styling */
+        .input-form {
+            margin-bottom: 15px;
+        }
 
-.input-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+        .input-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-.input-form input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+        .input-form input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-/* Checkbox and radio button styling */
-.check, .gender {
-    margin-bottom: 15px;
-}
+        /* Checkbox and radio button styling */
+        .check,
+        .gender {
+            margin-bottom: 15px;
+        }
 
-.check label, .gender label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
+        .check label,
+        .gender label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-.check input[type="checkbox"], .gender input[type="radio"] {
-    margin-right: 10px;
-}
+        .check input[type="checkbox"],
+        .gender input[type="radio"] {
+            margin-right: 10px;
+        }
 
-.check label, .gender label {
-    margin-right: 15px;
-    font-weight: normal;
-}
+        .check label,
+        .gender label {
+            margin-right: 15px;
+            font-weight: normal;
+        }
 
-/* Dropdown styling */
-.dropdown {
-    margin-bottom: 15px;
-}
+        /* Dropdown styling */
+        .dropdown {
+            margin-bottom: 15px;
+        }
 
-.dropdown label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
+        .dropdown label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-.dropdown select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+        .dropdown select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-/* Range input styling */
-input[type="range"] {
-    width: 100%;
-    margin-bottom: 15px;
-}
+        /* Range input styling */
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 15px;
+        }
 
-/* Button styling */
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
+        /* Button styling */
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
 
-/* Responsive design */
-@media (max-width: 600px) {
-    form {
-        padding: 15px;
-    }
+        /* Responsive design */
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
 
-    .input-form input[type="text"], .dropdown select {
-        padding: 6px;
-    }
+            .input-form input[type="text"],
+            .dropdown select {
+                padding: 6px;
+            }
 
-    button[type="submit"] {
-        width: 100%;
-        padding: 12px;
-    }
-}
+            button[type="submit"] {
+                width: 100%;
+                padding: 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <form action="{{ route('employee.save') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -158,7 +165,7 @@ button[type="submit"]:hover {
             <span style="color:red">@error('gender'){{ $message }} @enderror</span>
 
         </div>
-        
+
         <div class="dropdown">
             <label for="city"> Enter city</label>
             <select name="city">
@@ -171,14 +178,15 @@ button[type="submit"]:hover {
 
         </div>
         <div class="input-form"></div>
-            <label for="resume">Upload Photo</label>
-            <input type="file" name="photo">
-            <span style="color:red">@error('photo'){{ $message }} @enderror</span>
+        <label for="resume">Upload Photo</label>
+        <input type="file" name="photo">
+        <span style="color:red">@error('photo'){{ $message }} @enderror</span>
         </div>
-        
+
 
         <button type="submit">Save </button>
 
     </form>
 </body>
+
 </html>

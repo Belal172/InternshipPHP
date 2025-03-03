@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
@@ -39,7 +41,7 @@ route::get('first/{name}/{id}', function ($name, $id) {
 
 //sub routes
 route::prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/admindashboard', function () {
         return "Admin Dashboard";
 
     });
@@ -91,7 +93,7 @@ route::view('/home1','home1');
 //route::get('/loop/{id}',[UserController::class,'show'])->name('loops.view');
 
    
-    Route::get('/loop',[Usercontroller::class,'index'])->name('user.index');
+   // Route::get('/loop',[Usercontroller::class,'index'])->name('user.index');
 
 
     //form hamdling
@@ -103,3 +105,14 @@ route::view('/home1','home1');
     route::delete('/destroyemp/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
     route::get('/editemp/{id}',[EmployeeController::class,'edit'])->name('employee.edit');
     route::put('/updateemp/{id}',[EmployeeController::class,'update'])->name('employee.update');
+
+
+    //authenticatio and login pages
+   route::get('/register',function(){
+    return view('login.register');
+   })->name('register');
+   route::post('registered',[UserController::class,'register'])->name('registered');
+  route::view('/login','login.login')->name('login.login');
+  route::post('/loginmatch',[UserController::class,'login'])->name('loginmatch');
+  route::get('/dashboard',[UserController::class,'dashboardPage'])->name('login.dashboard');
+  route::get('/logut',[UserController::class,'logout'])->name('logout');

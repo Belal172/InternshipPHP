@@ -27,7 +27,8 @@ class StoreEmployeeREquest extends FormRequest
                 'phone'=>'required |numeric |digits:10',
                 'city'=>'required',
                 'skills'=>'required | nullable |array',
-                'gender'=>'required | in:male,female,others'
+                'gender'=>'required | in:male,female,others',
+                'photo'=>'required |file|mimes:jpg,png,pdf|max:2048'
         ];
     }
 }
