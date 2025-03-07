@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Email\MailController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentController;
@@ -116,3 +117,8 @@ route::view('/home1','home1');
   route::post('/loginmatch',[UserController::class,'login'])->name('loginmatch');
   route::get('/dashboard',[UserController::class,'dashboardPage'])->name('login.dashboard');
   route::get('/logut',[UserController::class,'logout'])->name('logout');
+
+
+
+  //routes for mail controller
+  Route::get('sendmail',[MailController::class,'sendMail']);
