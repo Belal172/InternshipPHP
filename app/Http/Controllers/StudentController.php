@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Notifications\MyNotification;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -67,5 +68,11 @@ class StudentController extends Controller
     {
         student::destroy($id);
         return redirect()->route('student.index');
+    }
+    public function notification(string $id)
+    {
+        $students = Student::find($id);
+        $students->notify(new MyNotification('This is to notify ypou'));
+        return back()->with('success','notified successfully');
     }
 }

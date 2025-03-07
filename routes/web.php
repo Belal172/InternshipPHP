@@ -122,3 +122,6 @@ route::view('/home1','home1');
 
   //routes for mail controller
   Route::get('sendmail',[MailController::class,'sendMail']);
+
+  //notification
+  route::get('notify/{id}',[StudentController::class,'notification'])->name('notify');
