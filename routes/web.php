@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Jobs\SendEmail;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -125,3 +126,10 @@ route::view('/home1','home1');
 
   //notification
   route::get('notify/{id}',[StudentController::class,'notification'])->name('notify');
+
+//route for queue
+  route::get('send-mail',function(){
+    SendEmail::dispatch('dhunganahr88@gmail.com');
+    return 'email sent';
+
+  });
