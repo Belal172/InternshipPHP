@@ -1,2 +1,2 @@
 <h1>About </h1>
-{{ $name }}
+<a href="{{ route('Homepage') }}">Homepage</a>
