@@ -35,11 +35,19 @@
                             <td>{{ $student->address }}</td>
                             <td><a href="{{ route('student.view',$student->id) }}" class="btn btn-success">View</a></td>
                             <td><a href="{{ route('student.edit',$student->id) }}" class="btn btn-primary">Edit</a></td>
-                            <td><form action="{{ route('student.destroy',$student->id) }}" method="post">
+                            <td>
+                                <form action="{{ route('student.destroy',$student->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
-                            </form></td>
+                            </form>
+
+                            <form action="{{ route('notify',$student->id) }}" method="get">
+                                @csrf
+                               
+                                <button type="submit" class="btn btn-warning">Notify</button>
+                            </form>
+                        </td>
 
                         </tr>
                         
