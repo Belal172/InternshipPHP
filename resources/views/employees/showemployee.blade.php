@@ -47,7 +47,7 @@
         <p>City: {{ $employees->city }}</p>
         <p>Skills:
         <ul>
-                @foreach(json_decode($employee->skills) as $skill)
+                @foreach(json_decode($employees->skills) as $skill)
                                         <li>{{ $skill }}</li>
                                 @endforeach
                            
